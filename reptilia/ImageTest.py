@@ -6,10 +6,15 @@ Created on 2012-12-18
 '''
 
 from PIL import Image, ImageFilter, ImageEnhance
+from Matrix import Matrix, MatrixHandler
 
 image_name = "E:/Downloads/captcha1.jpg"
 
 im = Image.open(image_name,'r')
+
+#if(im.mode !=Image.getmodebase("RGB")):
+#    print ""
+#    exit()
 
 im = im.filter(ImageFilter.MaxFilter)
 #
@@ -36,7 +41,11 @@ for i in range(256):
 
 bim = Lim.point(table, '1')  
 
-bim.show()
+m=Matrix(bim)
+h=MatrixHandler(m.getMatrix())
+h.doHandler()
+
+#bim.show()
 ##
 #Lim.save('captchaxxx.jpg')
 # 
